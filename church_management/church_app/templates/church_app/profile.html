@@ -1,0 +1,145 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+    <br/>
+    <br/>
+    <div class='ui two column divided padded stackable grid'>
+    <div class='column'>
+    <form method='POST' enctype='multipart/form-data' class='ui form'>
+            {% csrf_token %}
+            <div class='two fields'>
+                <div class='field'>
+                    <label>Username</label>
+                    {{updated_form.username}}
+                </div>
+                <div class='field'>
+                    <label>Email </label>
+                    {{updated_form.email}}
+                </div>
+            </div>
+            <div class="two fields">
+                <div class="field">
+                <label>{{profile_form.firstname.label}}</label>
+                {{profile_form.firstname}}
+                </div>
+  
+                <div class="field">
+                <label>{{profile_form.surname.label}}</label>
+                {{profile_form.surname}}
+                </div>
+                
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                <label>{{profile_form.member_id.label}}</label>
+                {{profile_form.member_id}}
+                </div>
+  
+                <div class="field">
+                <label>{{profile_form.date_of_birth.label}}</label>
+                {{profile_form.date_of_birth}}
+                </div>
+                
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                <label>{{profile_form.region.label}}</label>
+                {{profile_form.region}}
+                </div>
+  
+                <div class="field">
+                <label>{{profile_form.phone_number.label}}</label>
+                {{profile_form.phone_number}}
+                </div>
+                
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                <label>{{profile_form.wing_name.label}}</label>
+                {{profile_form.wing_name}}
+                </div>
+  
+                <div class="field">
+                <label>{{profile_form.resident_address.label}}</label>
+                {{profile_form.resident_address}}
+                </div>
+                
+            </div>
+
+             <div class="two fields">
+                <div class="field">
+                <label>{{profile_form.gender.label}}</label>
+                {{profile_form.gender}}
+                </div>
+  
+                <div class="field">
+                <label>{{profile_form.image.label}}</label>
+                {{profile_form.image}}
+                </div>
+                
+            </div>
+
+                <br/>
+                <br/>
+                <button type='submit' class='ui button'>Update Profile</button>
+           </form> 
+    </div>
+
+    <div class='column'>
+    <h2 class="ui header">
+    <img class="ui  circular image" src="{{user.profile.image.url}}">
+    <div class="content">
+        {{user.profile.firstname}} {{user.profile.surname}}
+        <div class='sub header'>
+            {{user.profile.wing_name}}
+        </div>
+    </div>
+    </h2>
+        <table class="ui celled table">
+        <thead>
+            <tr><th></th>
+            <th></th>
+        </tr></thead>
+        <tbody>
+            <tr>
+            <td data-label="Name">Name</td>
+            <td data-label="Age">{{user.profile.firstname}} {{user.profile.surname}}</td>
+            </tr>
+
+            <tr>
+            <td data-label="Name">Date of Birth</td>
+            <td data-label="Age">{{user.profile.date_of_birth}} </td>
+            </tr>
+
+            <tr>
+            <td data-label="Name">Gender</td>
+            <td data-label="Age">{{user.profile.gender}} </td>
+            </tr>
+
+            <tr>
+            <td data-label="Name">Region</td>
+            <td data-label="Age">{{user.profile.region}}</td>
+            </tr>
+
+            <tr>
+            <td data-label="Name">Wing Name</td>
+            <td data-label="Age">{{user.profile.wing_name}}</td>
+            </tr>
+
+            <tr>
+            <td data-label="Name">Phone</td>
+            <td data-label="Age">{{user.profile.phone_number}}</td>
+            </tr>
+
+            <tr>
+            <td data-label="Name">Adress</td>
+            <td data-label="Age">{{user.profile.resident_address}}</td>
+            </tr>
+
+        </tbody>
+    </tbody>
+    </div>
+    </div>
+{% endblock content %}

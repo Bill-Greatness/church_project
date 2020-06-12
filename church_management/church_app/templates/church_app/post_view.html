@@ -1,0 +1,31 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+<br/>
+<br/>
+<br/>
+<div class='ui container'>
+    <div class='ui items'>
+    <div class="item">
+            <div class="ui small image">
+            <img src="{{current_post.image.url}}">
+            </div>
+            <div class="content">
+                <a class="header" >{{current_post.title|upper}}</a>
+                <div class="meta">
+                    <span>{{current_post.date_posted}} - {{current_post.author.profile.firstname}} {{current_post.author.profile.surname}}</span>
+                    {% if current_post.author == user %}
+                      <div class='extra'>
+                      <i class='ui red cancel icon'></i>
+                      <i class='ui green edit icon'></i>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+                <div class='description'>
+                    {{current_post.content}}
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+{% endblock content %}

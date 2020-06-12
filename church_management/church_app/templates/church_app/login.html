@@ -1,0 +1,22 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+    <br/>
+    <br/>
+    <br/>
+    <div class='ui  centered padded  grid'>
+
+        <div class='center aligned row'>    
+            <img width='120' height='120px' class='ui circular image' src="https://fomantic-ui.com/images/wireframe/image.png" >  
+        </div>
+        <div class='ui segment' style='width:50%'>
+            <form method='POST' class='ui form'>
+            {% csrf_token %}
+            {{form}}
+            <br/>
+            <br/>
+            <button type='submit' class='ui button'>Login </button>
+            </form>
+        </div>
+        </div>
+    </div>
+{% endblock content %}

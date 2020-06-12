@@ -1,0 +1,174 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+    <br/>
+    <br/>
+     <div class='ui two column centered padded grid'>
+        <div class='column'>
+
+            <form method='POST' enctype='multipart/form-data' class='ui form'>
+                {% csrf_token %}
+                 <div class="two fields">
+                 {% if form.username.errors %}
+                           
+                     <div class="error field">
+                    <label>{{form.username.label}}</label>
+                    {{form.username}}
+                    {{form.username.errors}}
+                    </div>
+                    {% else %}
+                    <div class='field'>
+                    <label>{{form.username.label}} </label>
+                        {{form.username}}
+                        
+                    </div>
+                 {% endif %}
+                    
+    
+                    {% if form.email.errors %}
+                    <div  class="error field">
+                    <label for={{form.email.label}}>{{form.email.label}}</label>
+                    {{form.email}}
+                    {{form.email.errors}}
+                    </div>
+                        {% else %}
+                    <div  class="field">
+                    <label>{{form.email.label}}</label>
+                    {{form.email}}
+                    </div>
+                    {% endif %}
+                    
+                
+                </div>
+
+                    <div class="field">
+                    <label>{{form.firstname.label}}</label>
+                    {{form.firstname}}
+                    </div>
+
+
+                <div class="two fields">
+                    <div class="field">
+                     {% if form.password1.errors %}
+                    <div  class="error field">
+                    <label for={{form.password1.label}}>{{form.password1.label}}</label>
+                    {{form.password1}}
+                    {{form.password1.errors}}
+                    </div>
+                        {% else %}
+                        <div  class="field">
+                    <label>{{form.password1.label}}</label>
+                    {{form.password1}}
+                    </div>
+                    {% endif %}
+                    </div>
+    
+                    <div class="field">
+                     {% if form.password2.errors %}
+                    <div  class="error field">
+                    <label for={{form.password2.label}}>{{form.password2.label}}</label>
+                    {{form.password2}}
+                
+                   {{form.password2.errors}}
+                    </div>
+                        {% else %}
+                        <div  class="field">
+                    <label>{{form.password2.label}}</label>
+                    {{form.password2}}
+                    </div>
+                    {% endif %}
+                    </div>
+                
+                </div>
+                <br/>
+                <br/>
+                <button type='submit' class='ui button'>Register</button>
+            </form>
+           {% comment %} <form class='ui form'>
+            {% csrf_token %}
+            <div class="two fields">
+                <div class="field">
+                <label>{{form.firstname.label}}</label>
+                {{form.firstname}}
+                </div>
+  
+                <div class="field">
+                <label>{{form.surname.label}}</label>
+                {{form.surname}}
+                </div>
+                
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                <label>{{form.member_id.label}}</label>
+                {{form.member_id}}
+                </div>
+  
+                <div class="field">
+                <label>{{form.date_of_birth.label}}</label>
+                {{form.date_of_birth}}
+                </div>
+                
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                <label>{{form.region.label}}</label>
+                {{form.region}}
+                </div>
+  
+                <div class="field">
+                <label>{{form.phone_number.label}}</label>
+                {{form.phone_number}}
+                </div>
+                
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                <label>{{form.wing_name.label}}</label>
+                {{form.wing_name}}
+                </div>
+  
+                <div class="field">
+                <label>{{form.resident_address.label}}</label>
+                {{form.resident_address}}
+                </div>
+                
+            </div>
+
+             <div class="two fields">
+                <div class="field">
+                <label>{{form.gender.label}}</label>
+                {{form.gender}}
+                </div>
+  
+                <div class="field">
+                <label>{{form.image.label}}</label>
+                {{form.image}}
+                </div>
+                
+            </div>
+
+                <br/>
+                <br/>
+                <button type='submit' class='ui button'>Register </button>
+           </form> {% endcomment %}
+        </div>
+
+        <div class='column'>
+            <h2 class='ui header'>Registered</h2>
+            <div class="ui relaxed divided list">
+                <div class="item">
+                    <i class="large github middle aligned icon"></i>
+                    <div class="content">
+                    <a class="header">Semantic-Org/Semantic-UI</a>
+                    <div class="description">Updated 10 mins ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+     </div>
+{% endblock content %}

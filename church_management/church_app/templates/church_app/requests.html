@@ -1,0 +1,94 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+<br/>
+<br/>
+<br/>
+    <div class='ui container'>
+        <div class='ui two column stackable grid'>
+        <div class='column'>
+            <h3>Submit a Request </h3>
+                <form method='POST' class='ui form'>
+                    {% csrf_token %}
+                    <div class='field'>
+                        <label>{{form.full_name.label}}</label>
+                        {{form.full_name}}
+                    </div>
+                    <div class='two fields'>
+                        <div class='field'>
+                            <label>{{form.email.label}}</label>
+                              {{form.email}}  
+                        </div>
+
+                         <div class='field'>
+                            <label>{{form.phone.label}}</label>
+                              {{form.phone}}
+                         </div>
+
+                    </div>
+
+                    <div class='two fields'>
+                        <div class='field'>
+                            <label>{{form.district.label}}</label>
+                              {{form.district}}  
+                        </div>
+
+                         <div class='field'>
+                            <label>{{form.request_title.label}}</label>
+                              {{form.request_title}}
+                         </div>
+
+                    </div>
+
+                    <div class='field'>
+                        <label>{{form.request_content.label}}</label>
+                        {{form.request_content}}
+                    </div>
+
+                    <button type='submit' class='ui button'>Send Request </button>
+
+                </form>
+            </div>
+
+            <div class='column'>
+                <h3>Announcements </h3>
+                <div class="ui relaxed divided list">
+                    <div class="item">
+                        <i class="large bell middle aligned icon"></i>
+                        <div class="content">
+                        <a class="header">Mesage Title</a>
+                        <div class="description">Date, and description, with something</div>
+                        </div>
+                    </div>
+
+                     <div class="item">
+                        <i class="large bell middle aligned icon"></i>
+                        <div class="content">
+                         <a class="header">Mesage Title</a>
+                        <div class="description">Date, and description, with something</div>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <i class="large bell middle aligned icon"></i>
+                        <div class="content">
+                        <a class="header">Mesage Title</a>
+                        <div class="description">Date, and description, with something</div>
+                        </div>
+                    </div>
+
+
+                    <div class="item">
+                        <i class="large bell middle aligned icon"></i>
+                        <div class="content">
+                        <a class="header">Sermon</a>
+                        <div class="description">Date Posted - Preacher</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    <div>
+{% endblock content %}

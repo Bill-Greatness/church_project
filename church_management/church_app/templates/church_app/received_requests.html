@@ -1,0 +1,36 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+<br/>
+<br/>
+<br/>
+    <div class='ui container'>
+            <div class='ui two column stackable grid'>
+                <div class='column'>
+                    {% if requests %}
+                    <div class="ui relaxed divided list">
+                            {% for request in requests %}
+                            <div class="item">
+                                <i class="large bullhorn middle aligned icon"></i>
+                                <div class="content">
+                                <a class="header" onclick="showMessageDetails({request})">{{request.full_name}}</a>
+                                <div class="description">{{request.date_requested}}</div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                             </div>
+                        {% else %}
+                        <div class='ui loading'></div>
+                    {% endif %}
+                </div>
+
+                <div class='column'>
+                    <h3>Previews Here y</h3>
+                </div>
+            </div>
+    </div>
+    <script>
+        function showMessageDetails(message_data){
+            console.log(message_data)
+        }
+    </script>
+{% endblock content %}

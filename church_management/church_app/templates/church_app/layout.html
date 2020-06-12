@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link type='text/css' rel='stylesheet' href="{% static 'church_app/dist/semantic.min.css' %}" />
+    <link type='text/css' rel='stylesheet' href="{% static 'church_app/dist/custom/c-style.css' %}">
+    <script src={% static 'church_app/dist/semantic.min.js' %}></script>
+    {% if title %}
+            <title>{{title}}</title>
+        {% else %}
+            <title>Church Management System </title>
+    {% endif %}
+
+</head>
+<body>
+    <div class="ui fixed borderless pointing menu" >
+         <a class="active item" href="{% url 'home-page' %}">
+            Logo/Home
+        </a>
+      <div class='left menu hide-on-mobile'>
+
+         <a class="item" href="{% url 'about-church' %}">
+            About
+        </a>
+        <a class="item" href="{% url 'our-gallery' %}">
+            Gallery
+        </a>
+
+         <a class="item" href="{% url 'requests-and-news' %}">
+           Requests
+        </a>
+
+        <a class="item" href="{% url 'resources' %}">
+            Resources
+        </a>
+
+        {% if user.is_authenticated %}
+           <a class="item" href="{% url 'forum-home' %}">
+           Forum
+        </a>
+        {% endif %}
+       </div>
+
+        <div class="right menu hide-on-mobile">
+                   
+            {% if user.is_authenticated %}
+
+            <div class="ui dropdown item">
+              Profile
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                  <a class="ui item" href="{%url 'user-profile'%}">
+                     Profile
+                 </a>
+                 {% if user.is_authenticated %}
+                  {% if user.is_staff %}
+                  <a class="ui item" href="{% url 'received-requests' %}">
+                    Messages
+                  </a>
+
+                  <a class="ui item" href="{% url 'register' %}">
+                    Register
+                  </a>
+                  {% endif %}
+                {% endif %}
+                 <a class="ui item" href="{% url 'add-to-forum' %}">
+                    Post to Forum
+                </a>
+                 <a class="ui item" href="{% url 'logout' %}">
+                  Logout
+                  </a>
+              </div>
+            </div>                
+              {% else %}
+            <a class="ui item" href="{% url 'login' %}">
+              Login
+            </a>
+            {% endif %}
+
+            
+
+             
+           
+        </div>
+        <div class='right menu hide-on-desktop'>
+            <a class="ui item" onclick='toogleSideBar()'>
+                 <i class='ui bars icon'></i>
+            </a>
+            </div>
+    </div>
+
+<div class="ui left thin sidebar inverted vertical menu">
+<br/>
+<br/>
+<br/>
+    
+         <a class="item" href="{% url 'about-church' %}">
+          <i class='ui info icon'></i>
+            About
+        </a>
+        <a class="item" href="{% url 'our-gallery' %}">
+        <i class='ui image icon'></i>
+            Gallery
+        </a>
+
+         <a class="item" href="{% url 'requests-and-news' %}">
+         <i class='ui send icon'></i>
+           Requests
+        </a>
+
+        <a class="item" href="{% url 'resources' %}">
+        <i class='ui folder icon'></i>
+            Resources
+        </a>
+
+        {% if user.is_authenticated %}
+           <a class="item" href="{% url 'forum-home' %}">
+           <i class='ui chat icon'></i>
+           Forum
+        </a>
+        {% endif %}
+
+         {% if user.is_authenticated %}
+            <a class="ui item" href="{% url 'add-to-forum' %}">
+            <i class='ui plus icon'></i>
+                Post
+            </a>
+
+           
+            <a class="ui item" href="{%url 'user-profile'%}">
+            <i class='ui user icon'></i>
+                Profile
+            </a>
+
+                 <a class="ui item" href="{% url 'logout' %}">
+                  <i class='ui sign out alternate icon'></i>
+                  Logout
+                  </a>
+              {% else %}
+            <a class="ui item" href="{% url 'login' %}">
+            <i class='ui sign in alternate icon'></i>
+              Login
+            </a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+              {% if user.is_staff %}
+              <a class="ui item" href="{% url 'received-requests' %}">
+                <i class='ui bell icon' ></i>
+                 Received Requests
+              </a>
+
+              <a class="ui item" href="{% url 'register' %}">
+                 <i class='ui handshake outline icon' ></i>
+                 Register
+              </a>
+              {% endif %}
+            {% endif %}
+
+  </div>
+  <div class="pusher">
+    {% block content%}
+
+    {%endblock content %}
+  </div>
+
+<script>
+  function toogleSideBar(){
+    $('.ui.sidebar')
+  .sidebar('toggle')
+;
+  }
+
+  $('.ui.dropdown')
+  .dropdown()
+;
+
+</script>
+</body>
+</html>

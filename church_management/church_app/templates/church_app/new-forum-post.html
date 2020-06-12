@@ -1,0 +1,32 @@
+
+{% extends 'church_app/layout.html' %}
+{% block content %}
+<br/>
+<br/>
+<h3 class='ui header'>Add Forum Post</h3>
+<div class='ui container'>
+    
+    <form method='POST' enctype='multipart/form-data' class='ui form'>
+        {% csrf_token %}
+        <div class='two fields'>
+            <div class='field'>
+                <label>{{form.title.label}}</label>
+                {{form.title}}
+            </div>
+            <div class='field'>
+                <label>{{form.image.label}}</label>
+                {{form.image}}
+            </div>
+
+            
+        </div>  
+        <div class='field'>
+                <label>{{form.content.label}}</label>
+                {{form.content}}
+            </div>
+        <br/>
+        <br/>
+        <button type='submit' class='ui button'>Add Post </button>
+    </form>
+</div>
+{% endblock content %}

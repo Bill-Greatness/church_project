@@ -1,0 +1,32 @@
+{% extends 'church_app/layout.html' %}
+{% block content %}
+<br/>
+<br/>
+<h2 class='ui header'>Forum Posts </h2>
+ <div class='ui padded stackable grid'> 
+    <div class="ui divided items">
+    {% if posts %}
+            {% for post in posts %}
+            <div class="item">
+            <div class="ui small image">
+            <img src="{{post.image.url}}">
+            </div>
+            <div class="content">
+                <a class="header" href="{% url 'post-view' post.id %}">A{{post.title|upper}}</a>
+                <div class="meta">
+                    <span>{{post.date_posted}} - {{post.author.profile.firstname}} {{post.author.profile.surname}}</span>
+                </div>
+                <div class='description'>
+                    {{post.content|truncatewords:20 }}
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        {% else %}
+            <div class='ui loading'></div>
+    {% endif %}
+        
+    </div>
+</div>
+
+{% endblock content %}
